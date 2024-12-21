@@ -1,11 +1,8 @@
 # values.yaml
 
-
-
-
 # Frontend Configuration
 zauni-zadanie-2024-frontend:
-  replicaCount: 3
+  replicaCount: 1
   apiHost: "127.0.0.1"
   image:
     repository: morgrotsk/zauni-zadanie-appfrontend-2024
@@ -19,8 +16,8 @@ zauni-zadanie-2024-frontend:
     port: 8080
 
 # Backend Configuration
-backend:
-  replicaCount: 2
+zauni-zadanie-2024-backend:
+  replicaCount: 1
   image:
     repository: morgrotsk/zauni-zadanie-appbackend-2024
     tag: 1.0.0
@@ -28,7 +25,6 @@ backend:
     targetPort: 9080
     port: 9080
   env:
-    MONGO_CONN_STR: "mongodb://zauni-zadanie-2024-chart-mongodb:27017/platformsdb"
     MONGO_USERNAME: "admin"
     MONGO_PASSWORD: "password"
     MONGO_AUTH_SOURCE: "platformsdb"

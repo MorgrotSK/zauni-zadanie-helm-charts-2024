@@ -19,7 +19,7 @@ spec:
             - containerPort: {{ .Values.service.targetPort }}
           env:
             - name: MONGO_CONN_STR
-              value: {{ .Values.env.MONGO_CONN_STR }}
+              value: mongodb://{{ .Release.Name }}-mongodb:27017/platformsdb
             - name: MONGO_USERNAME
               value: {{ .Values.mongodb.auth.username }}
             - name: MONGO_PASSWORD
