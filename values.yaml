@@ -19,8 +19,8 @@ zauni-zadanie-2024-frontend:
     port: 8080
 
 # Backend Configuration
-zauni-zadanie-2024-backend:
-  replicaCount: 3
+backend:
+  replicaCount: 2
   image:
     repository: morgrotsk/zauni-zadanie-appbackend-2024
     tag: 1.0.0
