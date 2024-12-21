@@ -1,8 +1,11 @@
 # values.yaml
 
+
+
+
 # Frontend Configuration
-frontend:
-  replicaCount: 2
+zauni-zadanie-2024-frontend:
+  replicaCount: 3
   apiHost: "127.0.0.1"
   image:
     repository: morgrotsk/zauni-zadanie-appfrontend-2024
@@ -16,8 +19,8 @@ frontend:
     port: 8080
 
 # Backend Configuration
-backend:
-  replicaCount: 2
+zauni-zadanie-2024-backend:
+  replicaCount: 3
   image:
     repository: morgrotsk/zauni-zadanie-appbackend-2024
     tag: 1.0.0
@@ -30,56 +33,55 @@ backend:
     MONGO_PASSWORD: "password"
     MONGO_AUTH_SOURCE: "platformsdb"
 
-# MongoDB Subchart Configuration
-mongodb:
-  auth:
-    rootPassword: "YourStrongRootPassword"
-    username: "admin"
-    password: "password"
-    database: "platformsdb"
-  service:
-    type: ClusterIP
-  persistence:
-    enabled: false
-  initdbScripts:
-    init_script.js: |
-      db = db.getSiblingDB("platformsdb");
-      db.createUser({
-        user: "admin",
-        pwd: "password",
-        roles: [{ role: "readWrite", db: "platformsdb" }],
-      });
-      db.createCollection("platforms");
-      db.platforms.insertMany([
-        {
-          name: "openshift",
-          codedetail: {
-            usecase: "Container platform",
-            rank: 12,
-            homepage: "https://openshift.com",
-            download:
-              "https://developers.redhat.com/products/codeready-containers/overview",
-            votes: 0,
+  mongodb:
+    auth:
+      rootPassword: "YourStrongRootPassword"
+      username: "admin"
+      password: "password"
+      database: "platformsdb"
+    service:
+      type: ClusterIP
+    persistence:
+      enabled: false
+    initdbScripts:
+      init_script.js: |
+        db = db.getSiblingDB("platformsdb");
+        db.createUser({
+          user: "admin",
+          pwd: "password",
+          roles: [{ role: "readWrite", db: "platformsdb" }],
+        });
+        db.createCollection("platforms");
+        db.platforms.insertMany([
+          {
+            name: "openshift",
+            codedetail: {
+              usecase: "Container platform",
+              rank: 12,
+              homepage: "https://openshift.com",
+              download:
+                "https://developers.redhat.com/products/codeready-containers/overview",
+              votes: 0,
+            },
           },
-        },
-        {
-          name: "kubernetes",
-          codedetail: {
-            usecase: "Container orchestration platform ",
-            rank: 38,
-            homepage: "https://kubernetes.com",
-            download: "https://kubernetes.io/docs/tasks/tools/install-minikube/",
-            votes: 0,
+          {
+            name: "kubernetes",
+            codedetail: {
+              usecase: "Container orchestration platform ",
+              rank: 38,
+              homepage: "https://kubernetes.com",
+              download: "https://kubernetes.io/docs/tasks/tools/install-minikube/",
+              votes: 0,
+            },
           },
-        },
-        {
-          name: "rancher",
-          codedetail: {
-            usecase: "Container platform management ",
-            rank: 50,
-            homepage: "https://rancher.com/",
-            download: "https://github.com/rancher/rancher",
-            votes: 0,
+          {
+            name: "rancher",
+            codedetail: {
+              usecase: "Container platform management ",
+              rank: 50,
+              homepage: "https://rancher.com/",
+              download: "https://github.com/rancher/rancher",
+              votes: 0,
+            },
           },
-        },
-      ]);
+        ]);

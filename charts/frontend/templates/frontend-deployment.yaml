@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "app.name.fe" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "app.name.fe" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "app.name.fe" . }}
+    spec:
+      containers:
+        - name: frontend
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+              - containerPort: {{ .Values.service.targetPort }}
+          env:
+            - name: REACT_APP_APIHOSTPORT
+              value: {{ .Values.apiHost }}:{{ .Values.apiPort }}

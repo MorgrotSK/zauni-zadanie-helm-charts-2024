@@ -1,0 +1,13 @@
+# values.yaml
+
+# Frontend Configuration
+replicaCount: 2
+apiHost: "127.0.0.1"
+apiPort: 9080
+image:
+  repository: morgrotsk/zauni-zadanie-appfrontend-2024
+  tag: 1.0.0
+service:
+  nodePort: 30080
+  targetPort: 8080
+  port: 8080

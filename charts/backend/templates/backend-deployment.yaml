@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "app.name.be" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "app.name.be" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "app.name.be" . }}
+    spec:
+      containers:
+        - name: backend
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+          env:
+            - name: MONGO_CONN_STR
+              value: {{ .Values.env.MONGO_CONN_STR }}
+            - name: MONGO_USERNAME
+              value: {{ .Values.mongodb.auth.username }}
+            - name: MONGO_PASSWORD
+              value: {{ .Values.env.MONGO_PASSWORD }}
+            - name: MONGO_AUTH_SOURCE
+              value: {{ .Values.env.MONGO_AUTH_SOURCE }}

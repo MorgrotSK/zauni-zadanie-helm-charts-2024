@@ -1,0 +1,5 @@
+# Chart.yaml
+apiVersion: v2
+name: zauni-zadanie-2024-frontend
+description: A Helm chart for zauni-zadanie frontend
+version: 1.0.0
