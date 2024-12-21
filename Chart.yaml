@@ -1,0 +1,10 @@
+# Chart.yaml
+apiVersion: v2
+name: zauni-zadanie-2024-chart
+description: A Helm chart for zauni-zadanie
+version: 1.0.0
+
+dependencies:
+  - name: mongodb
+    version: 15.2.4
+    repository: https://charts.bitnami.com/bitnami

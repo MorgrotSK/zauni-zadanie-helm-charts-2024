@@ -1,0 +1,22 @@
+# templates/frontend-ingress.yaml
+
+{{- if .Values.frontend.ingress.enabled }}  # Ensure Ingress is enabled in values.yaml
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name:  {{ printf "%s-frontend" (include "app.name" .) }}
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    - host: {{ .Values.frontend.ingress.host }}  # This should match the value in values.yaml (e.g., localhost)
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ printf "%s-frontend" (include "app.name" .) }}
+                port:
+                  number: 8080
+{{- end }}
