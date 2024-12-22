@@ -1,0 +1,8 @@
+Výstupné poznámky:
+Frontend: Aplikácia je prístupná na porte 30080 na uzle (NodePort) a port 8080 bude vystavený pre prístup vo vnútri kontajnera.
+
+Backend: Backend aplikácia je prístupná na porte 9080. Mongodb používa konfiguráciu s prednastavenými hodnotami pre autentifikáciu a databázu "platformsdb".
+
+MongoDB: Pri prvotnom spustení bude automaticky vytvorený používateľ "admin" s prednastaveným heslom a databáza bude obsahovať tri platformy: "openshift", "kubernetes" a "rancher".
+
+Perzistentné úložisko: Ak je povolené, perzistentné úložisko MongoDB nebude povolené v tejto konfigurácii (default: enabled: false)

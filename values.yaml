@@ -7,9 +7,6 @@ zauni-zadanie-2024-frontend:
   image:
     repository: morgrotsk/zauni-zadanie-appfrontend-2024
     tag: 1.0.0
-  ingress:
-    enabled: false
-    host: 192.168.49.2
   service:
     nodePort: 30080
     targetPort: 8080
